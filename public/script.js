@@ -87,3 +87,5 @@ updateCart();
 //Add a remove button beside each item in the cart and remove that item from the cart when it's clicked. Update the total accordingly.
 
 //Don't allow "duplications" in the cart, but instead tally the number of each item like this:
+
+//hi
