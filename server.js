@@ -3,9 +3,9 @@ var app = express();
 app.use(express.static('node_modules'));
 app.use(express.static('public'));
 
-app.get('/', function(request, response){
-    response.send("hello world");
-  });
+app.get('/', function (request, response) {
+  response.send("hello world");
+});
 
 
 

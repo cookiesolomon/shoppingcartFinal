@@ -49,7 +49,18 @@ var updateCart = function () {
 var addItem = function (item) {
   // TODO: Write this function. Remember this function has nothing to do with display. 
   // It simply is for adding an item to the cart array, no HTML involved - honest ;-)
-  duplicateItems(item)
+
+
+  //LOGIC 
+      for (var i = 0; i < cart.length; i++) {
+        if (cart[i].name === item.name) {
+          cart[i].quantity++;
+          cart[i].price += item.price;
+          saveToLocalStorage();
+          return;
+        }    
+      }  
+ 
   cart.push(item);
   saveToLocalStorage();
 }
@@ -72,7 +83,6 @@ $('.add-to-cart').on('click', function () {
   item = { name: $(this).closest('.card').data().name, price: $(this).closest('.card').data().price, id: id++, quantity: 1 };
   addItem(item);
   updateCart();
-  // $('.shopping-cart').addClass('.show');
 });
 
 $('.clear-cart').on('click', function () {
@@ -87,19 +97,11 @@ $('.cart-list').on('click', '.remove-item', function (currentItem) {
 
   cart.splice(cart.indexOf(item), 1);
   removeFromArray.remove();
-  // $(this).closest('li').remove();
   updateCart();
 
 });
 
 var duplicateItems = function (item) {
-  for (var i = 0; i < cart.length; i++) {
-    if (cart[i].name === item.name) {
-      cart[i].quantity++;
-    }
-    
-  }
-  
 }
 
 updateCart();
